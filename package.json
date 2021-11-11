@@ -21,6 +21,7 @@
     "react-simple-timefield": "^3.2.5",
     "redux": "^4.1.2",
     "sass": "^1.43.4",
+    "video-react": "^0.14.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

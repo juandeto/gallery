@@ -8,6 +8,7 @@ import '../../styles/gallery.scss'
 const Gallery = () => {
     const dispatch = useDispatch()
     const { 
+        images,
         page, 
         section_view, 
         sort, 
@@ -16,13 +17,12 @@ const Gallery = () => {
         album_previews,
         show_mature
     } = useSelector(state => state)
-    const [images, setImages] = React.useState([])
 
     React.useEffect(() =>{
         const getImages = async () => {
             console.log("CLIENT ID: ", process.env.REACT_APP_CLIENT_ID_IMGUR)
-            const headers = {
-                'Authorization': `Client-ID 6eb75e0bca63b94` ,
+            const data_headers = {
+                'Authorization': `Client-ID d45643220b22b48` ,
                 'Accept': "application/json",
             }
             const url = `https://api.imgur.com/3/gallery/${section_view}/${sort}/${window}/${page}?showViral={${show_viral}}&mature=${show_mature}&album_previews=${album_previews}`
@@ -40,9 +40,8 @@ const Gallery = () => {
             //     })
             // console.log('DATA IMGS: ', req)
             try {
-                let data = await axios.get(url, headers)
-                console.log('DATA IMGS: ', data)
-                setImages()
+                let req = await axios.get(url, {headers:data_headers})
+                dispatch({type: "SET_IMAGES", payload: req?.data?.data})
             } catch (error) {
                 console.log(error)
                 return console.log(error)
@@ -57,7 +56,7 @@ const Gallery = () => {
     return(
         <Grid>
             {
-                Array.from({length: 12}, (_,i) => i).map((i) => <Thumbnail key={i}/>)
+                images?.map((post) => <Thumbnail key={post.id} post={post}/>)
             }
         </Grid>
         )

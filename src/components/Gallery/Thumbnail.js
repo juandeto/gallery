@@ -1,25 +1,39 @@
 import React from 'react'
-import {useSelector, useDispatch} from 'react-redux'
-import img from '/home/juan/gallery-app/src/assets/profile.jpeg'
+import 'video-react/dist/video-react.css'
+import { Player, LoadingSpinner, ControlBar } from 'video-react'
+import {GoArrowUp, GoArrowDown} from 'react-icons/go'
+import {AiFillEye} from 'react-icons/ai'
 
-const Thumbnail = () => {
+const Thumbnail = ({post}) => {
+    console.log('POST: ', post)
     return(
         <article className="post__container">
-            <a href="" class="post">
                 <figure className="post__image">
-                    <img src={img} alt="" />
+                   {post?.images?.[0].type.includes("video") ?
+                   <Player
+                   muted
+                   autoPlay
+                   >
+                       <LoadingSpinner />
+                        <source src={post?.images?.[0].link} />
+                        <ControlBar disableCompletely={true}>
+                        </ControlBar>
+                    </Player>:
+                   <img src={post?.images?.[0].link} alt="post" />}
                 </figure>
-                <span class="post__overlay">
-                    <p>
-                        <span class="post__likes">150</span>
-                        <span class="post__comments">10</span>
-                    </p>
-                </span>
-            </a>
-            
-            {/* <div className="post__info">
-                <p>My image</p>
-            </div> */}
+                <div class="post__description">
+                   <h4>{post?.title}</h4>
+                   <div className="post__info">
+                       <div className="post__ups">
+                           <GoArrowUp />
+                           <span>{post?.ups}</span>
+                           <GoArrowDown />
+                       </div>
+                       <div className="post__watch">
+                           <AiFillEye />
+                       </div>
+                   </div>
+                </div>
         </article>
         )
 }
