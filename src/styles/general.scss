@@ -1,0 +1,124 @@
+@import './Vars.scss';
+
+
+.header{
+    padding: 8px;
+    border-bottom: 1px solid $grey;
+    background: $white-color;
+}
+
+
+.homeHeader__container {
+    margin: 10px auto;
+    max-width: 300px;
+    padding: 16px 8px;
+    h1{
+        font-size: 1.8rem !important;
+        text-align: center;
+    }
+    .homeHeader__info{
+        padding: 16px ;
+        .homeHeader__info--btn{
+            margin: 0 32px;
+            border: none;
+            border-bottom: 2px $blue solid;
+            background: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+    }
+}
+
+
+.sectionNav__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 950px;
+    margin: 16px auto;
+    padding: 8px;
+    border-bottom: 1.5px solid $grey;
+}
+
+.sectionNav__btn{
+        @include buttonStyle;
+        font-size: 0.6rem;
+        margin: 0 4px;
+        &.active{
+            color: $blue;
+            font-weight: bold;
+            
+        }
+}
+
+.filter__container{
+    padding: 8px;
+    .filter__type{
+        margin: 16px 0;
+        label{
+            padding: 8px;
+        }
+    }
+    .filter__apply{
+        button{
+            display: block;
+            padding: 8px 16px;
+            width: 150px;
+            margin: 0 auto;
+            border: none;
+            border-radius: 4px;
+            background: $blue;
+            color: $white-color;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+    }
+}
+
+
+
+
+
+
+
+
+@media screen and (min-width: 285px) {
+
+        .sectionNav__btn{
+            font-size: 0.8rem;
+        }
+      }
+
+@media screen and (min-width: 350px) {
+
+    .sectionNav__btn{
+        font-size: 1rem;
+    }
+  }
+  
+
+
+@media screen and (min-width: 768px) {
+
+    .header{
+        padding: 16px;
+        font-size: 1.2rem;
+    }
+    
+
+    .homeHeader__container {
+        max-width: 400px;
+        h1{
+            font-size: 2.5rem !important;
+        }
+    }
+
+    .sectionNav__btn{
+        @include buttonStyle;
+        font-size: 1.2rem;
+    }
+  }
+  

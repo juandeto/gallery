@@ -1,0 +1,60 @@
+@import './Vars.scss';
+
+
+
+.grid__container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(70px, 600px));
+    margin: 4px auto;
+    justify-content: center;
+    grid-gap: 3px;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .grid__container {
+      grid-template-columns: repeat(3, minmax(140px, 300px));
+      grid-gap: 28px;
+    }
+  }
+  
+  .post__container {
+    .post {
+      position: relative;
+      display: block;
+      cursor: pointer;
+    }
+    .post__image {
+      margin: 0;
+      img {
+        width: 100%;
+        vertical-align: top;
+      }
+    }
+    .post__overlay {
+      display: none;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0, .4);
+      color: $white-color;
+      text-align: center;
+    }
+    .post:hover .post__overlay{
+          display: flex;
+    }
+  
+    .post__like,
+    .post__comments {
+      display: inline-block;
+      width: 80px;
+      margin: 5px;
+      font-weight: bold;
+      text-align: center;
+    }
+  
+  }
+  

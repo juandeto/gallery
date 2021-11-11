@@ -1,0 +1,45 @@
+@import './Vars.scss';
+
+
+
+.backdrop__container{
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    height: 100%;
+    width: 100%;
+
+    z-index: 10;
+    overflow: hidden;
+    content: "";
+    background: rgba(0, 0, 0, 0.70) !important;
+    opacity: 0;
+
+    
+    &.open{
+        opacity: 1;
+        transition: 1s opacity ease-in-out !important;
+    }
+}
+
+.asideModal_container{
+        left: -100%;
+        top: 0;
+        height: 100%;
+        width: 80%;
+        background-color: rgba(255,255,255,1);
+        z-index: 11;
+        transition: 1s transform ease-in-out !important;
+        &.open{
+            transform: translateX(0%);
+        }
+} 
+
+@media screen and (min-width: 768px) { 
+
+    .asideModal_container{
+        width: 40%;
+    }
+
+}
