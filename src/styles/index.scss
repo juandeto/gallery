@@ -8,12 +8,13 @@
 * {
  box-sizing: border-box;
  font-family: Nunito, Helvetica;
+ scroll-behavior: smooth;
 }
 
 
 body{
-   background: linear-gradient(180deg, rgba(10, 109, 215, 0.2) 16.15%, rgba(10, 109, 215, 0) 100%);
     width: 100%;
+    background: $background;
 }
 
 body, p {
@@ -26,6 +27,10 @@ body, p, textarea, input {
    font-size: 1rem;
 }
 
+
+h1,h2,h3,h4,p{
+   color: $text;
+}
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -76,7 +81,7 @@ input, select, textarea{
 input, select{
    padding: 8px 6px;
    border-radius: 4px;
-   background: $white-color;
+   background: $background;
    margin: 0 4px;
    width: calc(100% - 8px);
 }

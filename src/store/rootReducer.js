@@ -1,22 +1,28 @@
 import * as reducerTypes from './reducerTypes.js'
 
 const initialState = {
-   images: [],
+   posts: [],
    page: 0,
    section_view: "hot",
-   window: true,
+   window: "day",
    sort: "viral",
    show_viral: false,
-   show_mature: true, 
+   show_mature: false, 
    album_previews: true,
    modal: false,
-   loading: false
+   loading: false,
+   waterfall: false,
+   sticky: false,
+   error: {
+       status: 200,
+       description: ""
+   }
 }
  
 export default function RootReducer (state = initialState, action) {
 	switch (action.type) {
-	case reducerTypes.SET_IMAGES:
-        return { ...state, images: action.payload}
+    case reducerTypes.SET_POSTS:
+        return { ...state, posts: [].concat(action.payload)}    
     case reducerTypes.SET_SECTION_IN_VIEW:
         return { ...state, section_view: action.payload}
     case reducerTypes.SET_PAGE:
@@ -31,6 +37,11 @@ export default function RootReducer (state = initialState, action) {
         return { ...state, modal: action.payload}
     case reducerTypes.SET_LOADING:
         return { ...state, loading: action.payload}
+    case reducerTypes.SET_WATERFALL:
+            return { ...state, waterfall: action.payload}
+    case reducerTypes.SET_STICKY:
+            return { ...state, sticky: action.payload}
+    
 	default:
 		return state
 	}

@@ -2,97 +2,173 @@
 
 
 
+
+.gallery__container {
+  width: 80%;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: $background;
+}
+
 .grid__container {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(auto, 600px));
+    width: 100%;
     margin: 4px auto;
     justify-content: center;
-    grid-gap: 3px;
+    grid-gap: 16px 8px;
+    padding: 8px;
   }
   
-  @media screen and (min-width: 768px) {
-    .grid__container {
-      grid-template-columns: repeat(3, minmax(140px, 300px));
-      grid-gap: 28px;
-    }
+
+  .emptyPost {
+      width: 240px;
+      height: 240px;
+      box-shadow: $post-shadow;
+      border-radius: 3px;
+      background: $empty-back;
   }
-  
+
+.ReactVirtualized__Masonry {
+  outline: none;
+}
+
+
   .post__container {
     box-shadow: $post-shadow;
-    border-radius: 6px;
-    position: relative;
-    .post {
-      position: relative;
-      display: block;
-      cursor: pointer;
-    }
+    border-radius: 3px;
+    background: $soft-back !important;
+    height: inherit;
+    overflow: hidden;
+    cursor: pointer;
     .post__image {
       margin: 0;
       border-radius: 6px 6px 0 0;
-      overflow: hidden;
+      height: 80%;
+      background: $soft-back;
       img {
+        background: $soft-back;
+        height: 100%;
         width: 100%;
-        vertical-align: top;
-        object-fit: contain;
+        height: auto;
+        object-fit: cover;
+      }
+      video{
+        background: $soft-back;
       }
     }
+
+
+
     .post__description {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      margin-bottom: auto;
       padding: 4px;
-      h4{
-        font-size: 1.3rem;
-        font-weight: normal;
-        margin-left: 16px;
+      background: $soft-back;
+      border-bottom: 4px solid transparent;
+      border-radius: 0  0 3px 3px;
+      .post__title{
+        width: 100%;
+        display: inline-block;
+        padding-top: 10px;
+        max-height: 40px;
+        overflow: hidden;
+        span{
+          display: inline-block;
+          max-height: 45px;
+          width: 90%;
+
+          color: $white-color;
+          line-height: 1.14;
+          font-size:14px;
+          font-weight: 600;
+          text-align: left;
+          
+          text-overflow: ellipsis;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+        }
       }
+
       .post__info{
+        justify-self: end;
+        align-self: end;
+        padding: .4rem .2rem;
         display: flex;
         justify-content: space-around;
-        color: $blue;
+        color: $light-text;
+        font-size: 12px;
+        letter-spacing: .3px;
       }
       .post__ups,
-      .post__down,
+      .post__coments,
       .post__watch {
-        display: inline-block;
-        width: 80px;
-        margin: 5px;
+        @include centerContent;
+        width: 33%;
+        margin: 0 6px;
+        z-index: 1;
         font-weight: bold;
-        text-align: center;
-        svg{
-          font-size: 1.5rem;
-          cursor: pointer;
-        }
-        svg:hover {
-          -webkit-filter: drop-shadow(0px 0px 4px $blue);
-          filter: drop-shadow(0px 0px 4px $blue);
-        }
-      }
-      .post__ups{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        svg{
-         width: 30px;
-        }
+        text-align: left;
+        cursor: pointer;
         span {
-          margin: 0 8px;
+          margin-left: 4px;
+          margin-bottom: 0;
+        }
+        svg{
+          font-size: 1.3rem;
         }
       }
+      .post__ups:hover,
+      .post__coments:hover,
+      .post__watch:hover {
+        color: $white-color;
+        svg{
+          -webkit-filter: drop-shadow(0px 0px 4px $white-color);
+          filter: drop-shadow(0px 0px 4px $white-color);
+        }
+      }
+      
     }
   }
   .post__container::after{
+    z-index: 10;
      content: "";
 				position: absolute;
 				top: 0;
 				left: 0;
 				width: 100%;
 				height: 100%;
-				background-color: rgba($blue, 0.1);
-				z-index: 2;
-				transform: scaleX(0);
-				transition:transform 200ms ease-in;
-				transform-origin: top right;
+				background-color: rgba($white-color, 0.2);
+				z-index: 1;
+        transform: scaleX(0);
+        transition: 0.3s all ease;
   }
 
   .post__container:hover::after{
+    z-index: 10;
     transform: scaleX(1);
-    transform-origin: top left;
+    transform-origin: top;
   }
+
+
+.video-react-big-play-button {
+  display: none !important;
+}
+
+//  @media screen and (min-width: 400px) {
+//     .post__container {
+//       position: relative;
+//       cursor: pointer;
+//       .post__image {
+//         max-height: 160px;
+        
+//       }
+//     }
+
+//   }

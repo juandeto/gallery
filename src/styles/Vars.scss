@@ -1,14 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:300,400,700,800,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,600;0,700;0,900;1,200;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500&display=swap');
 
+$background: #2E3035;
+$soft-back: #474a51;
 $grey: #CACACA;
-$light-text: #7e7e7e;
+$soft-text: #99B9C2;
+$light-text: #8D929A;
 $white-color: #FFFFFF;
 $text: #1E1E1E;
 $violet: #5B47F5;
 $blue: #2C88D9;
+$soft-green: rgb(93,184,112); 
+$deep-blue: #181844;
 $light-blue: rgb(211,230,247);
 $post-shadow: 0 2px 4px 0 rgba(0,0,0,.4);
+$grad-background: linear-gradient(to bottom, $deep-blue 0%,$background 100%); 
+$empty-back: linear-gradient(to top, rgb(93,184,112) 0%,rgb(140, 214, 156) 100%); 
 
 @mixin centerContent{
     display: flex;
@@ -19,13 +27,34 @@ $post-shadow: 0 2px 4px 0 rgba(0,0,0,.4);
 @mixin buttonStyle{
     display: flex;
     align-items: center;
-    color: $light-text;
+    color: $soft-text;
     border: none;
     background: none;
-    padding: 8px 12px;
+    padding: 8px 0px;
     cursor: pointer;
     border-radius: 4px;
+    font-size: 0.7rem;
     svg{
-        margin-right: 8px;
+        margin: 0 8px;
     }
+    @media (min-width: 400px) {
+        font-size: 1rem;
+        padding: 8px 12px;
+    }
+}
+
+
+
+@mixin backgroundGradient {
+    background: $soft-text;
+        // background: -moz-linear-gradient(to right,$white-color 8%, #6C00AA 20%, #E9008C 30%); 
+        // background: -webkit-linear-gradient(to right,$white-color 8%, #6C00AA 20%, #E9008C 30%); 
+        // background: linear-gradient(to right,$white-color 8%, #6C00AA 50%, #E9008C 60%);        
+        // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='$light-blue',GradientType=0 );       
+	  background-size: auto auto;
+      background-clip: border-box;
+	  background-size: 200% auto;
+	  background-clip: text;
+	  -webkit-background-clip: text;
+	  -webkit-text-fill-color: transparent;
 }
