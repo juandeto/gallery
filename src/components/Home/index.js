@@ -6,6 +6,7 @@ import Header from '../General/Header'
 import HomeHeader from '../General/HomeHeader'
 import PostNav from '../General/PostNav'
 import Spinner from '../Ul/Spinner'
+import ScrollUpBtn from '../Ul/ScrollUpBtn'
 import './../../styles/index.scss'
 import './../../styles/gallery.scss'
 import './../../styles/general.scss'
@@ -29,7 +30,9 @@ const CARD = {
 };
 
 class MasonryGallery extends React.Component {
-
+  state = {
+    columnCount: 0
+  }
 
   getCollections = () => {
     const {
@@ -63,6 +66,12 @@ class MasonryGallery extends React.Component {
     if(page === 0){
      this.props.getPosts(url); 
     }
+
+    if(this._masonry.props.width !== 0){
+      const columns = this.getColumnCount()
+      this.setState({columnCount: columns})
+    }
+    
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -120,7 +129,8 @@ class MasonryGallery extends React.Component {
   getPositionerConfig = width => {
     const { gutterSize } = this._config;
     const columnCount = this.getColumnCount(width);
-    
+    console.log('column count: ', columnCount)
+
     let widthCol = columnCount === 1 ? 290 : CARD.WIDTH
 
     return {
@@ -152,6 +162,7 @@ class MasonryGallery extends React.Component {
   }
 
   onResize = ({ width }) => {
+    console.log('WIDTH! ', width)
     this.resetCellPositioner(width);
     this._masonry.recomputeCellPositions();
   };
@@ -290,6 +301,7 @@ cellRenderer = config => {
         <HomeHeader />
         <PostNav />
         {this.renderImageGallery()}
+        <ScrollUpBtn />
         {this.props.loading &&
         <Spinner />}
       </div>

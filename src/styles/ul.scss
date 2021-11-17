@@ -26,7 +26,7 @@
 
 .label_button {
   @include buttonStyle;
-  font-size: clamp(0.9rem, 0.8087rem + 0.5217vw, 1.2rem);
+  font-size: 0.7rem;
   margin: 0 4px;
   cursor: pointer;
   label{
@@ -46,6 +46,12 @@
   }
 }
 
+
+@media screen and (min-width: 400px) { 
+  .label_button {
+    font-size: clamp(0.9rem, 0.8087rem + 0.5217vw, 1.2rem);
+  }
+}
 
 
 .dropdown__container {
@@ -83,7 +89,7 @@
   background: none;
   cursor: pointer;
   svg{
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     color: $soft-text;
   }
   .tooltip {
@@ -107,7 +113,11 @@
   visibility: visible;
 } 
 
-
+@media screen and (min-width: 400px) { 
+  .icon__btn {
+    font-size: clamp(0.9rem, 0.8087rem + 0.5217vw, 1.2rem);
+  }
+}
 
 .scrollUp__container {
     position: fixed;
