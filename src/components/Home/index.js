@@ -29,10 +29,7 @@ const CARD = {
 };
 
 class MasonryGallery extends React.Component {
-  state = {
-    columnCount: 0,
-    items: [],
-  };
+
 
   getCollections = () => {
     const {
@@ -47,7 +44,7 @@ class MasonryGallery extends React.Component {
 
     const url = `${URL}/${section_view}/${sort}/${window}/${page}?showViral={${show_viral}}&mature=${show_mature}&album_previews=${album_previews}`
 
-   this.props.getPosts(url)
+    this.props.getPosts(url)
   };
 
   componentDidMount() {
@@ -62,11 +59,10 @@ class MasonryGallery extends React.Component {
     } = this.props
 
     const url = `${URL}/${section_view}/${sort}/${window}/${page}?showViral={${show_viral}}&mature=${show_mature}&album_previews=${album_previews}`
-    this.props.isLoading(true)
+
     if(page === 0){
      this.props.getPosts(url); 
     }
-    this.props.isLoading(false)
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -142,7 +138,6 @@ class MasonryGallery extends React.Component {
   getColumnCount = width => {
     const { columnWidth, gutterSize } = this._config;
     const columnCount = Math.floor(width / (columnWidth + gutterSize));
-    this.setState({ ...this.state, columnCount: columnCount });
     return columnCount;
   };
 
@@ -277,6 +272,14 @@ cellRenderer = config => {
     );
   };
 
+  renderImageGallery = () => {
+    return (
+      <div className="gallery__container">
+            {this.renderInfiniteLoader()}
+        </div>
+    )
+  }
+
   render() {
     const { posts } = this.props;
     if (!posts) return null;
@@ -286,9 +289,7 @@ cellRenderer = config => {
         <Header isHome={true}/>
         <HomeHeader />
         <PostNav />
-        <div className="gallery__container">
-            {this.renderInfiniteLoader()}
-        </div>
+        {this.renderImageGallery()}
         {this.props.loading &&
         <Spinner />}
       </div>
