@@ -1,7 +1,6 @@
 @import './Vars.scss';
 
 
-
 .display__container{
     display: flex;
     opacity: 1;
@@ -15,6 +14,17 @@
     
 }
 
+
+.display__gallery {
+  width: 100%;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: nowrap;
+   justify-content: flex-start;
+   align-items: center;
+   margin: 0 auto;
+ }
+
 .display__header{
     padding: 1rem;
     display: flex;
@@ -26,7 +36,7 @@
 }
 
 .display__sidebar{
-    width: 15%;
+    width: 10%;
     position: relative;
 }
  .display__info{
@@ -55,6 +65,7 @@
   .display__watch {
     @include centerContent;
     flex-direction: column;
+    
     width: 33%;
     margin: 20px 6px;
     z-index: 1;
@@ -79,16 +90,6 @@
     }
   }
   
-
-  .display__gallery {
-   min-width: 1152px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: stretch;
-    margin: 0 auto;
-  }
 
   .display__post {
     min-width: 30%;
@@ -126,8 +127,10 @@
   }
 
   .display__tags{
+    
       height: 80vh;
-      width: 25%;
+      width: 20%;
+      max-width: 25%;
       padding: 16px;
       display: flex;
       flex-direction: row;
@@ -158,4 +161,152 @@
         background: $soft-text;
         box-shadow: $post-shadow;
       }
+  }
+
+
+
+   @media screen and (max-width: 600px) {
+    .display__gallery {
+      min-width:unset;
+      width: 100%;
+       display: flex;
+       flex-direction: column;
+       flex-wrap: nowrap;
+       justify-content: center;
+       align-items: center;
+       margin: 0 auto;
+     }
+     .display__sidebar{
+      width: 80%;
+      position: relative;
+      margin: 4px auto;
+      order: 2;
+  }
+
+
+  .display__header{
+    h3{
+        font-size: 1.5rem;
+        text-align: center;
+        width: 100%;
+    }
+  }
+  .display__info{
+      position: block;
+      width: 100%;
+      margin-top: 24px;
+      margin: 4px auto 0 auto;
+      padding: .1rem 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      border: 1px solid $grey;
+      border-radius: 4px;
+      font-size: 12px;
+      letter-spacing: .3px;
+  
+    }
+    .display__ups,
+    .display__coments,
+    .display__watch {
+      @include centerContent;
+      flex-direction: column;
+      width: 20%;
+      margin: 6px 3px;
+      z-index: 1;
+      font-weight: bold;
+      text-align: left;
+      cursor: pointer;
+      span {
+          font-size: 0.8rem;
+          margin: 4px 0;
+      }
+      svg{
+        font-size: 1.6rem;
+      }
+    }
+
+    .display__post {
+      min-width: unset;
+      max-width: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 15px;
+        .display__imgContainer{
+          margin-bottom: 24px;
+          background-color: rgba(0,0,0,.1);
+          min-height: 140px;
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+          position: relative;
+            .display__media{
+              width: 100%;
+              background: none;
+                  .display__images{
+                    width: auto;
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    img {
+                    object-fit: contain;
+                    margin-top: 16px;
+                    max-height: 80vh;
+                    max-width: 100%;
+                }
+                  }
+                
+            }
+        }
+    }
+
+    .display__tags{
+      
+        min-height: 20vh;
+        height: auto;
+        max-height: 60vh;
+        width: 100%;
+        padding: 16px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        order: 3;
+        h3{
+          color: $soft-text;
+          font-size: 2rem;
+          display: block;
+          width: 100%;
+        }
+        .display__tag{
+            display: block;
+            margin: 4px;
+          padding: 8px;
+          border: 1px solid $soft-text;
+          color: $soft-text;
+          box-shadow: $post-shadow;
+          font-weight: bold;
+          border-radius: 4px;
+          text-transform: uppercase;
+          cursor: pointer;
+          transition: 0.3s all ease;
+        }
+        .display__tag:hover{
+          border: 1px solid $soft-text;
+          color: $deep-blue;
+          background: $soft-text;
+          box-shadow: $post-shadow;
+        }
+      }
+  }
+
+
+  @media screen and (min-width: 1300px) {
+    .display__gallery {
+      min-width: 1152px;
+    }
+    
   }

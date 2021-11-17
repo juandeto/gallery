@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import {getPosts, handlePageNumber, isLoading} from '../../store/actions.js'
+import {getPosts, handlePageNumber, isLoading } from '../../store/actions.js'
 import Thumbnail from '../General/Thumbnail'
 import Header from '../General/Header'
 import HomeHeader from '../General/HomeHeader'
@@ -88,14 +88,14 @@ class MasonryGallery extends React.Component {
         ) {
           const url = `${URL}/${section_view}/${sort}/${window}/0?showViral={${show_viral}}&mature=${show_mature}&album_previews=${album_previews}`
           this.props.getPosts(url);
-      return true;
+          return true;
     }
     
     if(page !== nextProps.page || 
       posts.length !== nextProps.posts ||
       posts?.[0]?.id !== nextProps?.posts?.[0].id
       ){
-      return true
+          return true
     }
 
     return false;
@@ -103,6 +103,7 @@ class MasonryGallery extends React.Component {
 
   componentDidUpdate(prevProps) {
     if(prevProps.page < this.props.page && this.props.page > 0){
+      
       this.loadMoreRows()
     }
   }
@@ -141,7 +142,7 @@ class MasonryGallery extends React.Component {
   getColumnCount = width => {
     const { columnWidth, gutterSize } = this._config;
     const columnCount = Math.floor(width / (columnWidth + gutterSize));
-    this.setState({ columnCount });
+    this.setState({ ...this.state, columnCount: columnCount });
     return columnCount;
   };
 
@@ -180,6 +181,7 @@ loadMoreRows () {
 
   const url = `${URL}/${section_view}/${sort}/${window}/${page}?showViral={${show_viral}}&mature=${show_mature}&album_previews=${album_previews}`
   this.props.getPosts(url);
+  
 }
 
 
@@ -198,10 +200,10 @@ cellRenderer = config => {
           }}
         >
         {item ?  <Thumbnail 
-                height={CARD.HEIGHT}
-                post={item}/>:
+                  height={CARD.HEIGHT}
+                  post={item}/>:
                 <div
-                style={{
+                  style={{
                   width: CARD.WIDTH,
                   height: `${this.state.columnCount ? 360 : CARD.HEIGHT}px`,
                   textAlign: "center",
@@ -265,7 +267,7 @@ cellRenderer = config => {
     const { posts } = this.props;
     return (
       <InfiniteLoader
-        minimumBatchSize={80}
+        minimumBatchSize={60}
         isRowLoaded={this.isRowLoaded}
         loadMoreRows={this.loadMoreRows}
         rowCount={posts.length}
@@ -305,7 +307,7 @@ const mapStateToProps = function(state) {
       album_previews: state.album_previews,
       show_mature: state.show_mature,
       loading: state.loading,
-      waterfall: state.waterfall
+      requestCache: state.requestCache
     }
   }
   
@@ -313,7 +315,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
       getPosts: (url, page) =>dispatch(getPosts(url, page)),
       handlePageNumber: (page) => dispatch(handlePageNumber(page)),
-      isLoading: (bool) => isLoading(bool)
+      isLoading: (bool) => dispatch(isLoading(bool))
     };
   };
 

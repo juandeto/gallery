@@ -11,7 +11,6 @@ const initialState = {
    album_previews: true,
    modal: false,
    loading: false,
-   waterfall: false,
    sticky: false,
    error: {
        status: 200,
@@ -37,8 +36,6 @@ export default function RootReducer (state = initialState, action) {
         return { ...state, modal: action.payload}
     case reducerTypes.SET_LOADING:
         return { ...state, loading: action.payload}
-    case reducerTypes.SET_WATERFALL:
-            return { ...state, waterfall: action.payload}
     case reducerTypes.SET_STICKY:
             return { ...state, sticky: action.payload}
     

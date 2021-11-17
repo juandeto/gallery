@@ -36,65 +36,65 @@ const DisplayPost = ({match}) => {
             <div className="display__gallery">
             <aside className="display__sidebar">
                 <div className="display__info">
-                <div className="display__watch">
-                           <AiFillEye />
-                           <span>{post?.score}</span>
-                       </div>
-                       <div className="display__ups">
-                           <GoArrowUp />
-                           <span>{post?.ups}</span>
-                       </div>
-                       <div className="display__ups">
-                           <GoArrowDown />
-                           <span>{post?.downs}</span>
-                       </div>
-                       <div className="display__coments">
-                           <BsFillChatFill />
-                           <span>{post?.comment_count}</span>
-                       </div>
-                       <div className="display__watch">
-                           <GoHeart />
-                           <span>{post?.views}</span>
-                       </div>
-                   </div>
-            </aside>
-            <section className="display__post">
-                <header className="display__header" >
-                    <h3>{post?.title}</h3>
-                </header>
-                <div className="display__imgContainer">
-                <figure className="display__media">
-               {post?.images?.[0].type.includes("video") || post?.type?.includes("video")?
-                   <Player
-                   muted
-                   autoPlay
-                   >
-                       <LoadingSpinner />
-                        <source src={post?.images?.[0]?.link || post.link} />
-                        <ControlBar disableCompletely={false}>
-                        </ControlBar>
-                    </Player>:
-                    <div className="display__images">
-                        {post?.images?.map((img,i)=>(
-                        <img 
-                        src={img?.link || post?.link} 
-                        key={i} alt="post" />
-                        ))
-                        }
+                    <div className="display__watch">
+                            <AiFillEye />
+                            <span>{post?.score}</span>
+                        </div>
+                        <div className="display__ups">
+                            <GoArrowUp />
+                            <span>{post?.ups}</span>
+                        </div>
+                        <div className="display__ups">
+                            <GoArrowDown />
+                            <span>{post?.downs}</span>
+                        </div>
+                        <div className="display__coments">
+                            <BsFillChatFill />
+                            <span>{post?.comment_count}</span>
+                        </div>
+                        <div className="display__watch">
+                            <GoHeart />
+                            <span>{post?.views}</span>
+                        </div>
                     </div>
-                   }
-                </figure>
+                </aside>
+                <section className="display__post">
+                    <header className="display__header" >
+                        <h3>{post?.title}</h3>
+                    </header>
+                    <div className="display__imgContainer">
+                        <figure className="display__media">
+                {post?.images?.[0].type.includes("video") || post?.type?.includes("video")?
+                    <Player
+                    muted
+                    autoPlay
+                    >
+                        <LoadingSpinner />
+                            <source src={post?.images?.[0]?.link || post.link} />
+                            <ControlBar disableCompletely={false}>
+                            </ControlBar>
+                        </Player>:
+                        <div className="display__images">
+                            {post?.images?.map((img,i)=>(
+                            <img 
+                            src={img?.link || post?.link} 
+                            key={i} alt={post?.title || "post"} />
+                            ))
+                            }
+                        </div>
+                    }
+                    </figure>
+                    </div>
+                </section>
+                <div className="display__tags">
+                    <h3>#TAGS</h3>
+                    {
+                        post?.tags?.map((tag, i) => (
+                            <span 
+                            className="display__tag" >#{tag.display_name}</span>
+                        ))
+                    }
                 </div>
-            </section>
-            <div className="display__tags">
-                <h3>#TAGS</h3>
-                {
-                    post?.tags?.map((tag, i) => (
-                        <span 
-                        className="display__tag" >#{tag.display_name}</span>
-                    ))
-                }
-            </div>
             </div>
         </main>
         </>

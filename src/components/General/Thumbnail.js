@@ -32,7 +32,7 @@ const Thumbnail = ({post, height}) => {
                     </Player>:
                    <img 
                    loading="lazy"
-                   src={post?.images?.[0].link || post.link} alt="post" />}
+                   src={post?.images?.[0].link || post.link} alt={post?.title} />}
                 </figure>
                 <div className="post__description">
                     <div className="post__title">

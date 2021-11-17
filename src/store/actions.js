@@ -14,7 +14,6 @@ export const getPosts = (url) => {
            const response =  await axios.get(url, {headers:data_headers})
 
            const posts =  await response?.data?.data
-           console.log('RESPONSE POSTS: ', posts)
            dispatch({type: "SET_POSTS", payload: posts})
            dispatch({type: "SET_LOADING", payload: false})
             return posts
@@ -36,8 +35,4 @@ export const handlePageNumber = (page) => {
 
 export const isLoading = (state) => {
     return {type: "SET_LOADING", payload: state}
-}
-
-export const handleWaterfall = (bool) => {
-    return {type: "SET_WATERFALL", payload: bool}
 }

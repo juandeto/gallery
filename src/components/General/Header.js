@@ -16,11 +16,9 @@ const Header = ({
     }
     
   return(
-      <header className={`header__section ${scrollY > 300 && 'is__sticky'}`}>
+      <header className={`header__section ${scrollY > 100 && 'is__sticky'}`}>
           
-          <h3 onClick={() => history.push('/')}>
-              Imgur
-          </h3>
+          <h3 onClick={() => history.push('/')}>Imgur</h3>
              {
               goBack &&
                 <span onClick={handleGoBack}  className="header__goBack"><BsChevronLeft /> <p>Go back</p></span>
