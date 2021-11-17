@@ -4,6 +4,7 @@ import {getPosts, handlePageNumber, isLoading } from '../../store/actions.js'
 import Thumbnail from '../General/Thumbnail'
 import Header from '../General/Header'
 import HomeHeader from '../General/HomeHeader'
+import ErrorModal from '../Ul/ErrorModal'
 import PostNav from '../General/PostNav'
 import Spinner from '../Ul/Spinner'
 import ScrollUpBtn from '../Ul/ScrollUpBtn'
@@ -129,7 +130,6 @@ class MasonryGallery extends React.Component {
   getPositionerConfig = width => {
     const { gutterSize } = this._config;
     const columnCount = this.getColumnCount(width);
-    console.log('column count: ', columnCount)
 
     let widthCol = columnCount === 1 ? 290 : CARD.WIDTH
 
@@ -162,7 +162,6 @@ class MasonryGallery extends React.Component {
   }
 
   onResize = ({ width }) => {
-    console.log('WIDTH! ', width)
     this.resetCellPositioner(width);
     this._masonry.recomputeCellPositions();
   };
@@ -291,6 +290,10 @@ cellRenderer = config => {
     )
   }
 
+  handlelCloseModal = {
+
+  }
+
   render() {
     const { posts } = this.props;
     if (!posts) return null;
@@ -304,6 +307,7 @@ cellRenderer = config => {
         <ScrollUpBtn />
         {this.props.loading &&
         <Spinner />}
+        <ErrorModal />
       </div>
     );
   }

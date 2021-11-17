@@ -36,6 +36,8 @@ export default function RootReducer (state = initialState, action) {
         return { ...state, modal: action.payload}
     case reducerTypes.SET_LOADING:
         return { ...state, loading: action.payload}
+    case reducerTypes.SET_ERROR:
+            return { ...state, error: action.payload}
     case reducerTypes.SET_STICKY:
             return { ...state, sticky: action.payload}
     

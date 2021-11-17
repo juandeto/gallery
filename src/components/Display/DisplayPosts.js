@@ -22,7 +22,6 @@ const DisplayPost = ({match}) => {
                 return post[0]
         }
         const postToDisplay = filterPostsById(id)
-        console.log('POST TO DISPLAY: ', postToDisplay)
         if(!postToDisplay){
             history.push('/')
         }

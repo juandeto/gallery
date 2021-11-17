@@ -18,9 +18,8 @@ export const getPosts = (url) => {
            dispatch({type: "SET_LOADING", payload: false})
             return posts
         } catch (error) {
-            console.log(error)
             dispatch({type: "SET_LOADING", payload: false})
-            dispatch({type: 'SET_ERROR', payload: {status: 500, description: `Error retrieving data in ${url} api` }})
+            dispatch({type: 'SET_ERROR', payload: {status: error.status, description: `Error retrieving data in ${url} api` }})
             return console.log(error)
         } finally {
             dispatch({type: "SET_LOADING", payload: false})

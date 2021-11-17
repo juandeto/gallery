@@ -1,15 +1,22 @@
 import React from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-import '../../styles/general.scss';
+import {AiOutlineClose} from 'react-icons/ai'
+import Backdrop from './Backdrop'
+import '../../styles/ul.scss';
 
-const Component = () => {
-    const state = useSelector()
-    const dispatch = useDispatch()
+const Modal = ({children, show, close}) => {
 
     return (
-        <div className="component__container">
-        </div>
+        <Backdrop show={show}>
+           
+          <div className="modal__container">
+            <div className="modal__closeBtn" onClick={close}>
+                <AiOutlineClose />
+            </div>
+              {children}
+        </div>  
+        </Backdrop>
+        
     )
 }
 
-export default Component;
+export default Modal;

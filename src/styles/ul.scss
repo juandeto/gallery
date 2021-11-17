@@ -19,8 +19,24 @@
     
     &.open{
         opacity: 1;
-        transition: 1s opacity ease-in-out !important;
+        transition: 0.4s opacity ease-in-out !important;
     }
+}
+
+.error__modal{
+  padding: 16px;
+  h3{
+    width: 100%;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 20px
+  }
+  p{
+    margin-top: 16px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    line-height: 2rem
+  }
 }
 
 
@@ -158,6 +174,27 @@
     }
 }
 
+}
+
+
+.modal__container {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  min-height: 60vh;
+  min-width: 70vh;
+  background: $white-color;
+  border-radius: 8px;
+  box-shadow: $post-shadow;
+  transform: translate(-50%, -50%);
+
+  .modal__closeBtn{
+    float: right;
+    color: $deep-blue;
+    font-size: 2rem;
+    cursor: pointer;
+  }
 }
 
 
