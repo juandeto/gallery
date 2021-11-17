@@ -35,22 +35,6 @@ class MasonryGallery extends React.Component {
     columnCount: 0
   }
 
-  getCollections = () => {
-    const {
-        section_view, 
-        sort,
-        window,
-        show_viral,
-        album_previews,
-        show_mature,
-        page
-    } = this.props
-
-    const url = `${URL}/${section_view}/${sort}/${window}/${page}?showViral={${show_viral}}&mature=${show_mature}&album_previews=${album_previews}`
-
-    this.props.getPosts(url)
-  };
-
   componentDidMount() {
     const {
         section_view, 
