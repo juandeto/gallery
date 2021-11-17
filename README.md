@@ -8,6 +8,9 @@ In the project directory, you can run:
 
 ### `yarn start`
 
+## IMPORTANT**: you need to create a .env file, and create a variable called REACT_APP_CLIENT_ID_IMGUR with your client_id to make it work.
+
+
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
