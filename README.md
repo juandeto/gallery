@@ -8,7 +8,7 @@ In the project directory, you can run:
 
 ### `yarn start`
 
-:stop_sign: IMPORTANT :stop_sign:: for runing your app in development mode you need to create a .env file in the root folder, and create a variable called `REACT_APP_CLIENT_ID_IMGUR` with your client_id t. :warning:
+:stop_sign: IMPORTANT :stop_sign:: for runing your app in development mode you need to create a .env file in the root folder, and create a variable called `REACT_APP_CLIENT_ID_IMGUR` with your client_id. :warning:
 
 
 Runs the app in the development mode.\
